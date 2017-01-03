@@ -5,6 +5,10 @@ package org.iskcon.nvcc.chantingApp.rest.model;
 
 import java.io.Serializable;
 
+import org.iskcon.nvcc.chantingApp.dto.UserDTO;
+
+import com.fasterxml.jackson.annotation.JsonGetter;
+
 /**
  * @author aditya.anand
  *
@@ -18,7 +22,7 @@ public class RegistrationResponse implements Serializable{
 	
 	private String errorCode;
 	private String errorMessage;
-	private User user;
+	private UserDTO userDto;
 	/**
 	 * @return the errorCode
 	 */
@@ -46,14 +50,15 @@ public class RegistrationResponse implements Serializable{
 	/**
 	 * @return the user
 	 */
-	public User getUser() {
-		return user;
+	@JsonGetter("user")
+	public UserDTO getUserDto() {
+		return userDto;
 	}
 	/**
 	 * @param user the user to set
 	 */
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserDto(UserDTO userDto) {
+		this.userDto = userDto;
 	}
 	
 

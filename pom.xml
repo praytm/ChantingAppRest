@@ -22,6 +22,13 @@
 
 
 	<dependencies>
+		<dependency>
+			<groupId>nvcc.chantingApprest</groupId>
+			<artifactId>ChantingAppBusinessServiceImpl</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+
 		<!-- Jackson -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
