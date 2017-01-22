@@ -13,16 +13,15 @@ import com.fasterxml.jackson.annotation.JsonGetter;
  * @author aditya.anand
  *
  */
-public class RegistrationResponse implements Serializable{
-
+public class LoginResponse implements Serializable{
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 5197876992759939872L;
-	
-	private String errorCode;
-	private  final  String tag = "registration";
+	private static final long serialVersionUID = 2145308080532280395L;
+	private  final  String tag = "login";
 	private String status;
+	private String errorCode;
 	private String errorMessage;
 	private UserDTO userDto;
 	/**
