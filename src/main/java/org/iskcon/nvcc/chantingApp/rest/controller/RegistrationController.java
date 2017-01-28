@@ -3,6 +3,8 @@ package org.iskcon.nvcc.chantingApp.rest.controller;
 import org.iskcon.nvcc.chantingApp.bs.UserService;
 import org.iskcon.nvcc.chantingApp.dto.UserDTO;
 import org.iskcon.nvcc.chantingApp.rest.model.RegistrationResponse;
+import org.iskcon.nvcc.chantingApp.rest.model.RestResponseCode;
+import org.iskcon.nvcc.chantingApp.rest.model.TechnicalStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,40 +18,36 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Handles requests for the ChantingApp
  */
 @Controller
-public class ChantingRestController {
+public class RegistrationController {
 
 	@Autowired
 	private UserService userService;
 
 	private static final Logger logger = LoggerFactory
-			.getLogger(ChantingRestController.class);
+			.getLogger(RegistrationController.class);
 
 	@RequestMapping(value = RestURIConstants.REGISTER_USER, method = RequestMethod.POST)
-	public @ResponseBody RegistrationResponse registerUser(
-			@RequestBody UserDTO input) {
+	@ResponseBody
+	public RegistrationResponse registerUser(@RequestBody UserDTO input) {
 		logger.info("Start getDummyEmployee");
 		RegistrationResponse registrationResponse = new RegistrationResponse();
 		try {
 			UserDTO output = userService.registerUser(input);
 			registrationResponse.setUserDto(output);
 			if (null != output) {
-				registrationResponse.setStatus("success");
-				registrationResponse.setErrorMessage("");
-			} else {
-				registrationResponse.setStatus("fail");
-				registrationResponse.setErrorCode("2");
 				registrationResponse
-						.setErrorMessage("user already existed with email "
-								+ input.getEmail());
+						.setResponseCode(RestResponseCode.REGISTRATION_SUCCESS);
+			} else {
+				registrationResponse
+						.setResponseCode(RestResponseCode.REGISTRATION_FAIL_DUPLICATE_EMAIL);
 			}
+			registrationResponse.setTechnicalStatus(TechnicalStatus.SUCCESS);
 		} catch (Exception e) {
-			logger.error("Exception in registerUser " , e);
-			registrationResponse.setStatus("fail");
-			registrationResponse.setErrorCode("1");
+			logger.error("Exception in registerUser ", e);
+			registrationResponse.setTechnicalStatus(TechnicalStatus.FAIL);
 			registrationResponse
-					.setErrorMessage("unknown error occured in registration");
+					.setResponseCode(RestResponseCode.TECHNICAL_FAILURE);
 		}
-
 		return registrationResponse;
 	}
 
