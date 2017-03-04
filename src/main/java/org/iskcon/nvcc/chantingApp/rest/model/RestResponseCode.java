@@ -50,6 +50,16 @@ public enum RestResponseCode {
 	 * refresh home service call was not successful due to invalid user credentials
 	 */
 	REFRESH_HOME_AUTHENTICATION_FAILURE(1),
+	
+	/**
+	 * New chanting session for the user was saved successfully in the database and the user status was reset back to NotActive
+	 */
+	CHANTING_SESSION_SAVE_SUCCESS(0),
+	
+	/**
+	 * New chanting session for the user could not be saved due to wrong credentials provided in the input
+	 */
+	CHANTING_SESSION_SAVE_AUTHENTICATION_FAILURE(1),
 	/**
 	 * A generic technical failure scenario for all usecases
 	 */
