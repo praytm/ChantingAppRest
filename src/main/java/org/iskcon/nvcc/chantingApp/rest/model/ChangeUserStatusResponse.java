@@ -27,12 +27,28 @@ public class ChangeUserStatusResponse extends AbstractRestResponse implements Se
 	 * 
 	 */
 	private Boolean userStatusChanged;
+	
+	private String chantingQuote;
 
 	/**
 	 * @return the tag
 	 */
 	public String getTag() {
 		return tag;
+	}
+
+	/**
+	 * @return the chantingQuote
+	 */
+	public String getChantingQuote() {
+		return chantingQuote;
+	}
+
+	/**
+	 * @param chantingQuote the chantingQuote to set
+	 */
+	public void setChantingQuote(String chantingQuote) {
+		this.chantingQuote = chantingQuote;
 	}
 
 	/**

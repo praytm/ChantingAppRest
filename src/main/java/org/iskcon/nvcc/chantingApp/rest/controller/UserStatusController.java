@@ -6,6 +6,7 @@ package org.iskcon.nvcc.chantingApp.rest.controller;
 import org.iskcon.nvcc.chantingApp.bs.UserService;
 import org.iskcon.nvcc.chantingApp.dto.UserDTO;
 import org.iskcon.nvcc.chantingApp.rest.model.ChangeUserStatusResponse;
+import org.iskcon.nvcc.chantingApp.rest.model.ChantingQuotesGenerator;
 import org.iskcon.nvcc.chantingApp.rest.model.RestResponseCode;
 import org.iskcon.nvcc.chantingApp.rest.model.TechnicalStatus;
 import org.slf4j.Logger;
@@ -56,6 +57,7 @@ public class UserStatusController {
 			changeUserStatusResponse.setUserStatusChanged(statusChanged);
 			changeUserStatusResponse
 					.setTechnicalStatus(TechnicalStatus.SUCCESS);
+			changeUserStatusResponse.setChantingQuote(ChantingQuotesGenerator.getQuote());
 		} catch (Exception e) {
 			logger.error("exception ocured in changeUserStatusToActive :", e);
 			changeUserStatusResponse.setTechnicalStatus(TechnicalStatus.FAIL);
