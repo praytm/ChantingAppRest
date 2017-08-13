@@ -35,8 +35,15 @@ public class RegistrationController {
 			UserDTO output = userService.registerUser(input);
 			registrationResponse.setUserDto(output);
 			if (null != output) {
-				registrationResponse
-						.setResponseCode(RestResponseCode.REGISTRATION_SUCCESS);
+				if(null != output.getUserId()){
+					registrationResponse
+					.setResponseCode(RestResponseCode.REGISTRATION_SUCCESS);	
+				} else{
+					//if userId is null that means userInput is returned as it is from dao and hence the data sent in request is not complete
+					registrationResponse
+					.setResponseCode(RestResponseCode.REGISTRATION_FAIL_INCOMPLETE_USER_DATA);
+				}
+
 			} else {
 				registrationResponse
 						.setResponseCode(RestResponseCode.REGISTRATION_FAIL_DUPLICATE_EMAIL);

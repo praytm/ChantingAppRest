@@ -30,6 +30,11 @@ public enum RestResponseCode {
 	 * registration failed due to duplicate email provided during registration
 	 */
 	REGISTRATION_FAIL_DUPLICATE_EMAIL(1),
+	
+	/**
+	 * Registration failed due to incomplete or incorrect user data input from client (check the GoogleAuthToken related data)
+	 */
+	REGISTRATION_FAIL_INCOMPLETE_USER_DATA(2),
 
 	/**
 	 * user status was changed successfully to active or notActive
