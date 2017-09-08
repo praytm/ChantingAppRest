@@ -71,4 +71,13 @@ public class RefreshUserStatisticsController {
 		}
 		return refreshUserStatisticsResponse;
 	}
+	
+	@RequestMapping(value = RestURIConstants.GET_TOTAL_BEADS_FOR_TODAY, method = RequestMethod.POST)
+	@ResponseBody
+	public Integer getTotalNumberOfBeadsForToday(){
+		
+	return	userService.getTotalNumberOfBeadsForToday();
+		
+	
+	}
 }
