@@ -80,4 +80,13 @@ public class RefreshUserStatisticsController {
 		
 	
 	}
+	
+	@RequestMapping(value = RestURIConstants.GET_DAILY_TARGET, method = RequestMethod.POST)
+	@ResponseBody
+	public String getValueFromMasterData(@RequestBody String key){
+		
+	return	userService.getValueFromMasterData(key);
+		
+	
+	}
 }
