@@ -13,4 +13,5 @@ public class RestURIConstants {
 	public static final String SAVE_NEW_CHANTING_SESSION = "/rest/user/save_new_chanting_session";
 	public static final String GET_USER_CHANTING_HISTORY = "/rest/user/get_chanting_history";
 	public static final String DELETE_EMP = "/rest/emp/delete/{id}";
+	public static final String GET_HIGHEST_CHANTING = "/rest/get_highest_chanters";
 }
